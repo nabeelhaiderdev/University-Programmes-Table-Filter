@@ -179,11 +179,11 @@ function programme_taxonomy_level() {
 
 add_action( 'init', 'programme_taxonomy_level', 0 );
 
-
 // Add meta box callback function
 function plugin_name_date_meta_box_callback($post) {
-    // Retrieve current value of the date meta field
-    $date = get_post_meta($post->ID, 'plugin_name_date', true);
+    // Retrieve current values of the date meta fields
+    $start_date = get_post_meta($post->ID, 'plugin_name_date', true);
+    $end_date = get_post_meta($post->ID, 'plugin_name_end_date', true);
 
     // Add a nonce field for security
     wp_nonce_field('plugin_name_date_meta_box', 'plugin_name_date_meta_box_nonce');
@@ -191,8 +191,13 @@ function plugin_name_date_meta_box_callback($post) {
     // Output the meta box HTML
     ?>
 <p>
-	<label for="plugin_name_date"><?php esc_html_e('Date:', 'plugin-name'); ?></label>
-	<input type="date" id="plugin_name_date" name="plugin_name_date" value="<?php echo esc_attr($date); ?>" />
+	<label for="plugin_name_date"><?php esc_html_e('Starting Date:', 'plugin-name'); ?></label>
+	<input type="date" id="plugin_name_date" name="plugin_name_date" value="<?php echo esc_attr($start_date); ?>" />
+</p>
+<p>
+	<label for="plugin_name_end_date"><?php esc_html_e('Ending Date:', 'plugin-name'); ?></label>
+	<input type="date" id="plugin_name_end_date" name="plugin_name_end_date"
+		value="<?php echo esc_attr($end_date); ?>" />
 </p>
 <?php
 }
@@ -202,7 +207,6 @@ function plugin_name_add_meta_boxes() {
     add_meta_box('plugin_name_date_meta_box', 'Date', 'plugin_name_date_meta_box_callback', 'programme', 'normal', 'default');
 }
 add_action('add_meta_boxes', 'plugin_name_add_meta_boxes');
-
 
 // Save meta box data
 function plugin_name_save_meta_box_data($post_id) {
@@ -216,9 +220,14 @@ function plugin_name_save_meta_box_data($post_id) {
         return;
     }
 
-    // Save the date meta field
+    // Save the starting date meta field
     if (isset($_POST['plugin_name_date'])) {
         update_post_meta($post_id, 'plugin_name_date', sanitize_text_field($_POST['plugin_name_date']));
+    }
+
+    // Save the ending date meta field
+    if (isset($_POST['plugin_name_end_date'])) {
+        update_post_meta($post_id, 'plugin_name_end_date', sanitize_text_field($_POST['plugin_name_end_date']));
     }
 }
 add_action('save_post', 'plugin_name_save_meta_box_data');

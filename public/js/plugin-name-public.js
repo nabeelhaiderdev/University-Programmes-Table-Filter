@@ -34,6 +34,51 @@
 			e.preventDefault();
 			jQuery(this).parents('.sideMenu').toggleClass('activeSideMenu').find('> .sideMenuDetails').slideToggle();
 		});
+
+		// Detect change event of checkboxes
+		jQuery('.sideMenuDetails #programmes-categories input[type="checkbox"]').change(function () {
+			// Check if the checkbox is checked
+			if (!jQuery(this).is(':checked')) {
+				// Log the value of the changed checkbox to the console
+				let current_cat_id = jQuery(this).attr('id');
+				jQuery("#full-cat-posts-" + current_cat_id).css("display", "none");
+			} else {
+				let current_cat_id = jQuery(this).attr('id');
+				jQuery("#full-cat-posts-" + current_cat_id).css("display", "table");
+			}
+		});
+
+		// Detect change event of checkboxes
+		jQuery('.sideMenuDetails #programmes-months input[type="checkbox"]').change(function () {
+			// Check if the checkbox is checked
+			if (!jQuery(this).is(':checked')) {
+				// Log the value of the changed checkbox to the console
+				let current_cat_id = jQuery(this).attr('id');
+				jQuery("th#month-name-" + current_cat_id).css("display", "none");
+				jQuery(".subtitle#programme-month-" + current_cat_id).css("display", "none");
+				console.log("#month-name-" + current_cat_id);
+			} else {
+				let current_cat_id = jQuery(this).attr('id');
+				jQuery("th#month-name-" + current_cat_id).css("display", "table-cell");
+				jQuery(".subtitle#programme-month-" + current_cat_id).css("display", "table-cell");
+				console.log("#month-name-" + current_cat_id);
+			}
+		});
+
+		// Detect change event of checkboxes
+		jQuery('.sideMenuDetails #programmes-levels input[type="checkbox"]').change(function () {
+			// Check if the checkbox is checked
+			if (!jQuery(this).is(':checked')) {
+				// Log the value of the changed checkbox to the console
+				let current_cat_id = jQuery(this).attr('id');
+				current_cat_id = current_cat_id.toLowerCase();
+				jQuery(".row-highlight#current-management-level-" + current_cat_id).css("display", "none");
+			} else {
+				let current_cat_id = jQuery(this).attr('id');
+				current_cat_id = current_cat_id.toLowerCase();
+				jQuery(".row-highlight#current-management-level-" + current_cat_id).css("display", "table-row");
+			}
+		});
 	});
 
 })(jQuery);
