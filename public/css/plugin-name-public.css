@@ -222,6 +222,7 @@
   float: right;
   color: #000;
   font-size: 13px;
+  cursor: pointer;
 }
 .pageTable .programFinder .sideMenu .btnUncheck:hover {
   color: #e03a29;

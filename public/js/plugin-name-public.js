@@ -55,12 +55,12 @@
 				// Log the value of the changed checkbox to the console
 				let current_cat_id = jQuery(this).attr('id');
 				jQuery("th#month-name-" + current_cat_id).css("display", "none");
-				jQuery(".subtitle#programme-month-" + current_cat_id).css("display", "none");
+				jQuery(".subtitle#programme-month-" + current_cat_id).closest("td").css("display", "none");
 				console.log("#month-name-" + current_cat_id);
 			} else {
 				let current_cat_id = jQuery(this).attr('id');
 				jQuery("th#month-name-" + current_cat_id).css("display", "table-cell");
-				jQuery(".subtitle#programme-month-" + current_cat_id).css("display", "table-cell");
+				jQuery(".subtitle#programme-month-" + current_cat_id).closest("td").css("display", "table-cell");
 				console.log("#month-name-" + current_cat_id);
 			}
 		});
@@ -79,6 +79,57 @@
 				jQuery(".row-highlight#current-management-level-" + current_cat_id).css("display", "table-row");
 			}
 		});
+
+		jQuery("#uncheck-all-categories").click(function () {
+			// Find all checkboxes within the "programmes-categories" list
+			jQuery("#programmes-categories input[type='checkbox']").each(function () {
+				// Uncheck the checkbox and trigger the 'change' event
+				jQuery(this).prop("checked", false).change();
+			});
+		});
+
+		jQuery("#check-all-categories").click(function () {
+			// Find all checkboxes within the "programmes-categories" list
+			jQuery("#programmes-categories input[type='checkbox']").each(function () {
+				// Uncheck the checkbox and trigger the 'change' event
+				jQuery(this).prop("checked", true).change();
+			});
+		});
+
+
+		jQuery("#uncheck-all-levels").click(function () {
+			// Find all checkboxes within the "programmes-categories" list
+			jQuery("#programmes-levels input[type='checkbox']").each(function () {
+				// Uncheck the checkbox and trigger the 'change' event
+				jQuery(this).prop("checked", false).change();
+			});
+		});
+
+		jQuery("#check-all-levels").click(function () {
+			// Find all checkboxes within the "programmes-categories" list
+			jQuery("#programmes-levels input[type='checkbox']").each(function () {
+				// Uncheck the checkbox and trigger the 'change' event
+				jQuery(this).prop("checked", true).change();
+			});
+		});
+
+
+		jQuery("#uncheck-all-months").click(function () {
+			// Find all checkboxes within the "programmes-categories" list
+			jQuery("#programmes-months input[type='checkbox']").each(function () {
+				// Uncheck the checkbox and trigger the 'change' event
+				jQuery(this).prop("checked", false).change();
+			});
+		});
+
+		jQuery("#check-all-months").click(function () {
+			// Find all checkboxes within the "programmes-categories" list
+			jQuery("#programmes-months input[type='checkbox']").each(function () {
+				// Uncheck the checkbox and trigger the 'change' event
+				jQuery(this).prop("checked", true).change();
+			});
+		});
+
 	});
 
 })(jQuery);

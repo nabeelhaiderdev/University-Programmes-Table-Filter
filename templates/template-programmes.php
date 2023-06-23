@@ -92,7 +92,9 @@ function sortMonths($a, $b) {
 
 usort($unique_months, 'sortMonths');
 
-
+$unique_months = array(
+        'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
+    );
 ?>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -124,7 +126,10 @@ usort($unique_months, 'sortMonths');
 								<?php } ?>
 							</ul>
 							<div class="menuInfo">
-								<a href="#" class="btnUncheck">Uncheck All</a>
+								<a class="btnUncheck" id="uncheck-all-categories">Uncheck All</a>
+							</div>
+							<div class="menuInfo">
+								<a class="btnUncheck" id="check-all-categories">Check All</a>
 							</div>
 						</div>
 					</div>
@@ -144,7 +149,10 @@ usort($unique_months, 'sortMonths');
 								<?php } ?>
 							</ul>
 							<div class="menuInfo">
-								<a href="#" class="btnUncheck">Uncheck All</a>
+								<a class="btnUncheck" id="uncheck-all-levels">Uncheck All</a>
+							</div>
+							<div class="menuInfo">
+								<a class="btnUncheck" id="check-all-levels">Check All</a>
 							</div>
 						</div>
 					</div>
@@ -166,7 +174,10 @@ usort($unique_months, 'sortMonths');
 								<?php } ?>
 							</ul>
 							<div class="menuInfo">
-								<a href="#" class="btnUncheck">Uncheck All</a>
+								<a class="btnUncheck" id="uncheck-all-months">Uncheck All</a>
+							</div>
+							<div class="menuInfo">
+								<a class="btnUncheck" id="check-all-months">Check All</a>
 							</div>
 						</div>
 					</div>
